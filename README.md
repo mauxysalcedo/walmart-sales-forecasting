@@ -1,41 +1,43 @@
 # 📈 Pronóstico de Ventas Semanales - Walmart
-**Curso:** Prospectiva Tecnológica y Producción Inteligente  
+**Asignatura:** Prospectiva Tecnológica y Producción Inteligente  
 **Dataset:** Walmart Recruiting - Store Sales Forecasting (Kaggle)
 
 ---
 
-## 📋 Descripción General
-Este proyecto implementa un flujo completo de análisis de datos y pronóstico de demanda de ventas semanales (`Weekly_Sales`). El trabajo se divide claramente en **dos partes fundamentales**: un análisis macro de las tiendas principales y un modelo predictivo focalizado.
+## 📋 Descripción General del Proyecto
+Este repositorio contiene el desarrollo completo de un ejercicio analítico y predictivo orientado a la gestión de demanda minorista (`Weekly_Sales`). El proyecto está estructurado metodológicamente en **dos partes complementarias**: un análisis macro de negocio y una extensión técnica de Machine Learning aplicada a series temporales.
 
 ---
 
-## 🗂️ Estructura del Proyecto: Dos Partes
+## 🗂️ Estructura y Desarrollo por Partes
 
-### Parte 1: Análisis Macro y Selección de Tiendas (Dashboard en Excel / Python)
-* **Objetivo:** Analizar el comportamiento macro de las tiendas con mayor volumen de ventas para identificar tendencias y estacionalidades generales.
-* **Herramientas:** Procesamiento inicial en Python (Pandas) para estructurar los datos que alimentan el dashboard analítico de negocio.
+### Parte 1: Análisis Macro y Visualización de Negocio
+* **Objetivo:** Analizar el comportamiento macroeconómico y la estacionalidad de las tiendas con mayor volumen de facturación histórica.
+* **Implementación:** 
+  * Procesamiento y agregación de datos mediante un pipeline en Python (Pandas) para agrupar ventas semanales.
+  * Estructuración de datos orientada a alimentar un **Dashboard en Excel** que facilita la visualización gerencial de las tendencias clave de las tiendas Top.
 
-### Parte 2: Modelado Predictivo y Machine Learning (Python / Series Temporales)
-* **Objetivo:** Extender el análisis a nivel de departamento (`Dept`) para predecir la demanda futura.
-* **Selección de Tienda (Foco Principal):** Se seleccionó específicamente la **Tienda 4** para esta fase de modelado debido a su alta estabilidad operativa y a la **menor presencia de ruido, valores atípicos y registros negativos** por devoluciones, garantizando así la calidad del entrenamiento.
-* **Metodología:** Entrenamiento de modelos de series temporales (como Holt-Winters) para el pronóstico de ventas semanales por departamento.
-
----
-
-## 🛠️ Arquitectura de Datos y Pipeline (ETL)
-El flujo de datos sigue una arquitectura estructurada en tres fases:
-1. **Extracción (Extract):** Carga del dataset masivo (`train.csv`) usando Python y Pandas.
-2. **Transformación (Transform):** Limpieza de fechas, agregaciones y filtrado específico de la Tienda 4 para el modelado.
-3. **Carga y Consumo (Load / Consumption):** Exportación de datos procesados hacia el dashboard en Excel y los scripts de Machine Learning en Jupyter Notebooks.
+### Parte 2: Modelado Predictivo y Machine Learning (Foco en Tienda 4)
+* **Objetivo:** Desplegar modelos de pronóstico de demanda a un nivel de granularidad mayor (**por departamento / `Dept`**).
+* **Criterio de Selección:** Para esta fase de modelado, se seleccionó específicamente la **Tienda 4**. Esta decisión estratégica se tomó tras verificar que presenta una alta estabilidad operativa y una **mínima presencia de ruido, valores atípicos y registros negativos** por devoluciones masivas, lo cual evita distorsiones críticas en los algoritmos de predicción.
+* **Metodología y Herramientas:** Implementación de modelos de series temporales (como *Holt-Winters*) en entornos de Jupyter Notebook para anticipar el comportamiento futuro de la demanda.
 
 ---
 
-## 🧰 Stack Tecnológico
+## 🔄 Arquitectura de Datos y Pipeline (ETL)
+El flujo de la información sigue una arquitectura analítica estándar:
+1. **Extracción (Extract):** Ingesta del archivo masivo `train.csv` (con más de 400,000 registros de ventas) utilizando Python.
+2. **Transformación (Transform):** Limpieza de tipos de datos, parseo de fechas (`parse_dates`), control de anomalías/valores negativos y segmentación focalizada (como el aislamiento de la Tienda 4 para la fase predictiva).
+3. **Carga y Consumo (Load / Consumption):** Despliegue de los resultados procesados hacia la capa de visualización de negocio (Excel) y la capa de experimentación algorítmica (Machine Learning).
+
+---
+
+## 🛠️ Stack Tecnológico
 * **Lenguaje:** Python 3.x
 * **Manipulación y Análisis:** Pandas, NumPy
-* **Visualización:** Matplotlib, Seaborn
-* **Machine Learning / Series Temporales:** Statsmodels (Holt-Winters), Scikit-learn
-* **Entorno:** VS Code, Jupyter Notebooks
-* **Visualización de Negocio:** Excel
+* **Machine Learning / Series Temporales:** Statsmodels (`ExponentialSmoothing` / Holt-Winters), Scikit-learn
+* **Visualización de Datos:** Matplotlib, Seaborn
+* **Entorno de Desarrollo:** VS Code, Jupyter Notebooks
+* **Herramientas Complementarias:** Microsoft Excel (Dashboards macro)
 
 ---
