@@ -1,37 +1,38 @@
-# 🛒 Walmart Store Sales Forecasting
-
-## 📝 Descripción del Proyecto
-Este repositorio contiene un proyecto académico de análisis de datos y machine learning desarrollado para predecir las ventas semanales de las tiendas Walmart. El objetivo principal es aplicar modelos predictivos sobre datos históricos (Kaggle) para facilitar la toma de decisiones y la prospectiva de la demanda.
-
-A través de un análisis exhaustivo de más de 420,000 registros, el proyecto se enfoca en la **Tienda 4**, seleccionada por su alto volumen de ventas (segundo lugar general con ~$299.5M) y la excelente calidad/limpieza de sus datos (cero registros con ventas nulas).
+# 📈 Pronóstico de Ventas Semanales - Walmart
+**Curso:** Prospectiva Tecnológica y Producción Inteligente  
+**Dataset:** Walmart Recruiting - Store Sales Forecasting (Kaggle)
 
 ---
 
-## 🛠️ Tecnologías y Herramientas Utilizadas
-* **Lenguaje:** Python 🐍
-* **Manipulación de Datos:** Pandas, NumPy
-* **Machine Learning:** Scikit-learn (Random Forest, Histogram Gradient Boosting)
+## 📋 Descripción del Proyecto
+Este proyecto implementa un modelo de análisis de datos y pronóstico de demanda de ventas semanales (`Weekly_Sales`) utilizando Python y librerías de Machine Learning. El objetivo principal es analizar el comportamiento macro de las tiendas con mayor volumen comercial y proyectar la demanda futura a nivel de departamento para optimizar la planificación logística y de inventarios.
+
+---
+
+## 🛠️ Arquitectura de Datos y Pipeline (ETL)
+El flujo de datos sigue una arquitectura analítica estructurada en tres fases principales:
+
+1. **Extracción (Extract):** Carga y lectura del dataset masivo (`train.csv`) utilizando **Python** y **Pandas**.
+2. **Transformación y Limpieza (Transform):** 
+   * Limpieza y formato de fechas (`parse_dates`).
+   * Agrupamiento de ventas por tienda y fecha (`groupby`).
+   * **Criterio de Selección de Tiendas:** Se evaluaron las tiendas con mayor volumen histórico y se seleccionó específicamente la **Tienda 4** debido a su alta estabilidad operativa y a la **menor presencia de ruido, valores atípicos y registros negativos** por devoluciones masivas, lo que garantiza una mayor calidad en el entrenamiento de los modelos predictivos.
+3. **Carga y Consumo (Load / Consumption):** Exportación de los datos procesados para alimentar un dashboard analítico en **Excel** y la capa de modelado predictivo en **Jupyter Notebooks**.
+
+---
+
+## 🧰 Stack Tecnológico
+* **Lenguaje:** Python 3.x
+* **Manipulación y Análisis de Datos:** Pandas, NumPy
 * **Visualización:** Matplotlib, Seaborn
-* **Entorno:** Jupyter Notebook / Anaconda
-* **Dashboards:** Excel (para reportes ejecutivos)
+* **Machine Learning / Series Temporales:** Statsmodels (Holt-Winters), Scikit-learn
+* **Entorno de Trabajo:** VS Code, Jupyter Notebooks
+* **Herramientas de Apoyo:** Excel (para visualización macro de negocio)
 
 ---
 
-## 🧠 Metodología y Modelado
-1. **Feature Engineering:** Se crearon variables temporales (semana del año, mes, año) y variables de rezago (`venta_semana_anterior`) para capturar la estacionalidad de las ventas.
-2. **División de Datos:** Se utilizó la fecha `"2012-06-01"` como punto de corte cronológico para separar los conjuntos de entrenamiento (`train`) y prueba (`test`).
-3. **Modelos Evaluados:**
-   * *Random Forest Regressor*
-   * *Histogram Gradient Boosting Regressor*
+## 🚀 Estructura del Notebook
+* **Parte 1:** Análisis macroeconómico y de tendencia de las tiendas Top (con foco en la Tienda 4).
+* **Parte 2:** Extensión de Machine Learning y pronóstico de series temporales a nivel de departamento (`Dept`).
 
 ---
-
-## 📊 Resultados Clave
-El modelo **Histogram Gradient Boosting** demostró un rendimiento superior, logrando un mejor ajuste a los datos reales agregados por semana:
-
-| Métrica Evaluada | Random Forest | Histogram Gradient Boosting |
-| :--- | :--- | :--- |
-| **RMSE** (Raíz del Error Cuadrático Medio) | $68,156.40 | **$60,343.19** |
-| **MAPE** (Error Porcentual Absoluto Medio) | 2.64% | **2.45%** |
-
-*Nota: Una tasa de error del 2.45% en forecasting de ventas al por menor representa un modelo altamente preciso y viable para aplicaciones del mundo real.*
