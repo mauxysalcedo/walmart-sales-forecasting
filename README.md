@@ -12,7 +12,7 @@ Este repositorio contiene el desarrollo completo de un ejercicio analítico y pr
 ## 🗂️ Estructura y Desarrollo por Partes
 
 ### Parte 1: Análisis Macro, Agregación y Selección de las Top 5 Tiendas
-* **Objetivo:** Analizar el comportamiento macroeconómico y la estacionalidad de las tiendas con mayor volumen de facturación histórica para comprender los patrones globales de venta.
+* **Objetivo:** Analizar el comportamiento macro y la estacionalidad de las tiendas con mayor volumen de facturación histórica para comprender los patrones globales de venta.
 * **Proceso y Alcance:**
   * **Carga y Exploración Masiva:** Ingesta inicial del dataset completo (`train.csv` con más de 421,000 registros) utilizando Python y Pandas para evaluar rangos de fechas, tipos de datos y consistencia general.
   * **Identificación del Top 5 de Tiendas:** Agrupamiento y ordenamiento de las ventas semanales por tienda (`Store` y `Date`) para aislar y perfilar **las 5 tiendas con mayor volumen total de ventas** en todo el historial.
